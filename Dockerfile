@@ -25,6 +25,6 @@ COPY --from=spacelift /bin/infracost /bin/infracost
 COPY --from=spacelift /tmp/terraform /bin/terraform
 
 RUN echo "hosts: files dns" > /etc/nsswitch.conf && \
-    adduser --disabled-password --no-create-home --uid=1983 spacelift
+    adduser --disabled-password --uid=1983 spacelift
 
 USER spacelift
