@@ -21,6 +21,7 @@ build:
 	CGO_ENABLED=0 GOOS=$(OS) GOARCH=$(ARCH) go build -a -installsuffix cgo -ldflags="-X main.Version=$(GIT_COMMIT)" -o builds/$(SERVICE_NAME)-$(OS)-$(ARCH)
 
 build-ci: clean
+	go mod tidy
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-X main.Version=$(GIT_COMMIT)" -o builds/$(SERVICE_NAME)-linux-amd64
 	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-X main.Version=$(GIT_COMMIT)" -o builds/$(SERVICE_NAME)-darwin-amd64
 	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -a -installsuffix cgo -ldflags="-X main.Version=$(GIT_COMMIT)" -o builds/$(SERVICE_NAME)-darwin-arm64
