@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"github.com/thoughtgears/spacelift-runner/internal/backup"
 )
 
 func main() {
@@ -20,7 +22,8 @@ func main() {
 	// Subcommand: Backup
 	backupCmd := flag.NewFlagSet("backup", flag.ExitOnError)
 	bucketPtr := backupCmd.String("bucket", "", "Name of the bucket (Required)")
-	targetPtr := backupCmd.String("target", "", "Object target location (Required)")
+	stackPtr := backupCmd.String("stack", "", "Name of the stack running (Required)")
+	filePathPtr := backupCmd.String("file-path", "", "File path to back up (Required)")
 	backupCmd.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage of %s:\n", backupCmd.Name())
 		backupCmd.PrintDefaults()
@@ -35,20 +38,22 @@ func main() {
 
 	if len(os.Args) < 2 {
 		hustonCmd.Usage()
-		os.Exit(1)
+		os.Exit(0)
 	}
 
 	switch os.Args[1] {
 	case "backup":
 		backupCmd.Parse(os.Args[2:])
-		if *bucketPtr == "" || *targetPtr == "" {
+		if *bucketPtr == "" || *filePathPtr == "" || *stackPtr == "" {
 			backupCmd.Usage()
+			os.Exit(0)
+		}
+		if err := backup.Run(*bucketPtr, *stackPtr, *filePathPtr); err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			os.Exit(1)
 		}
-		fmt.Println("Starting backup of terraform state.")
 	case "check-x":
 		checkXCmd.Parse(os.Args[2:])
-		fmt.Println("Performing check-x...")
 	case "help":
 		if len(os.Args) > 2 {
 			switch os.Args[2] {
@@ -64,6 +69,5 @@ func main() {
 		}
 	default:
 		hustonCmd.Usage()
-		os.Exit(1)
 	}
 }
