@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] - 2024-04-30
+## [v0.0.4] - 2024-04-30
 
 ### Added
 - Initial release of huston.
