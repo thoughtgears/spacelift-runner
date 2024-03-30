@@ -3,8 +3,11 @@ name: Build and Push Spacelift Image
 on:
   push:
     branches: [ main ]
+    tags:
+      - 'v*.*.*'
   pull_request:
     branches: [ main ]
+
 
 jobs:
   build-and-release-huston:
