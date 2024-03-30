@@ -1,4 +1,4 @@
-name: Build and Push New Huston Spacelift Image
+name: Build and Push New Spacelift Image with Huston
 
 on:
   push:
