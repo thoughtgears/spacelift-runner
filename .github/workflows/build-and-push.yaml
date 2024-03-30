@@ -15,7 +15,6 @@ jobs:
     permissions:
       contents: read
 
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v3
@@ -27,9 +26,14 @@ jobs:
         shell: bash
 
       - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: builds/*
+          files: |
+            builds/huston-linux-amd64
+            builds/huston-darwin-amd64
+            builds/huston-darwin-arm64
+            builds/huston-windows-amd64.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
