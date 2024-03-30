@@ -25,7 +25,10 @@ stack_defaults:
 
 ## Huston
 
-Huston is an application that can run in the different contexts and create various tasks. 
+Huston is an application that can run in the different contexts and create various tasks. Currently supported tasks are:
+
+- backup state
+- check latest module versions in terraform code
 
 ### Implemented tasks
 
