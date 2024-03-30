@@ -2,7 +2,13 @@ module github.com/thoughtgears/spacelift-runner
 
 go 1.22.1
 
-require cloud.google.com/go/storage v1.40.0
+require (
+	cloud.google.com/go/storage v1.40.0
+	github.com/fatih/color v1.16.0
+	github.com/kelseyhightower/envconfig v1.4.0
+	github.com/machinebox/graphql v0.2.2
+	github.com/spf13/cobra v1.8.0
+)
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
@@ -18,6 +24,12 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.3 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/matryer/is v1.4.1 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.49.0 // indirect
