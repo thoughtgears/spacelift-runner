@@ -2,7 +2,7 @@ FROM public.ecr.aws/spacelift/runner-terraform:latest as spacelift
 
 ARG TERRAFORM_VERSION=1.7.5
 ARG TFLINT_VERSION=0.50.3
-ARG SNYK_VERSION=1.666.0
+ARG SNYK_VERSION=1.1286.3
 
 WORKDIR /tmp
 
@@ -14,7 +14,7 @@ RUN curl -O -L https://github.com/terraform-linters/tflint/releases/download/v${
   && unzip tflint_linux_amd64.zip \
   && chmod +x tflint
 
-RUN curl -O -L https://static.snyk.io/cli/v${SNYK_VERSION}/snyk-alpine \
+RUN curl -O -L https://github.com/snyk/cli/releases/download/v${SNYK_VERSION}/snyk-alpine \
   && chmod +x snyk-alpine
 
 # Build the final image
