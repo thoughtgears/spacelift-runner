@@ -35,6 +35,7 @@ COPY --from=spacelift /tmp/snyk-alpine /bin/snyk
 COPY builds/huston-linux-amd64 /bin/huston
 
 RUN echo "hosts: files dns" > /etc/nsswitch.conf && \
-    adduser --disabled-password --uid=1983 spacelift
+    adduser --disabled-password --uid=1983 spacelift && \
+    ln -s /bin/terraform /usr/local/bin/terraform
 
 USER spacelift
