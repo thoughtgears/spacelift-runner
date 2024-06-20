@@ -1,6 +1,6 @@
 FROM public.ecr.aws/spacelift/runner-terraform:latest as spacelift
 
-ARG TERRAFORM_VERSION=1.7.5
+ARG TERRAFORM_VERSION=1.8.5
 ARG TFLINT_VERSION=0.50.3
 ARG SNYK_VERSION=1.1286.3
 
