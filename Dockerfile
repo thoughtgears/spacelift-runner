@@ -18,7 +18,7 @@ RUN curl -O -L https://github.com/snyk/cli/releases/download/v${SNYK_VERSION}/sn
   && chmod +x snyk-alpine
 
 # Build the final image
-FROM alpine:3.19
+FROM alpine:3
 
 RUN apk -U upgrade && apk add --no-cache \
     bash \
